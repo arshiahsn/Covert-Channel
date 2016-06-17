@@ -7,14 +7,14 @@ The single bit of information about existence of a file may not seem like much i
 1. This project contains two files: A sender and a receiver
 2. Compile both files using any C/C++ compiler such as (gcc, visualC, ...)
 3. Run each programme seperately.
-4. Sender asks you for input, you can use any desired ascii string.
-5. Sender starts broadcasting the message using method explained later. Each message starts and ends with a preemtion block containing two characters: '%' and '$' (%$ for start and $% for end of message)  
+4. Sender asks you for input, use any desired ascii strings.
+5. Sender starts broadcasting the message using method explained later. Each message starts and ends with a preemtion block containing two characters: '%' and '$' ('%$' for start and '$%' for end of message)  
 6. Receiver starts sensing by detecting characters '%' and '$' consecutively.
-7. Receiver synchronizes with sender and captures message.
+7. Receiver synchronizes itself with sender and captures message.
 8. When message fully captured, receiver signals the sender to quit.
 9. Receiver terminates itself.
 ==========================================================================================================================================================================================================================================================
 This project works only on microsoft windows.
-The bandwidth of covert channel is set to 1bit per second, which can be changed to any desired speed according to system support for file creation and deletion on a second. Default address is set to C:\\
-For each bit of message, existence of the folder indicates 1 and non-existence of the folder indicates 0.
-Sender converts the message to ascii, character by character from the begging and creates or deletes a folder on default address according to the related message bit. Receiver checks whether the folder exists or not and saves 0 or 1 according to the result. Receiver converts each 8 bits to an ascii character. If receiver captures a preemtion block, it signals the sender that it has received the message using the same method, and then it quits.
+The bandwidth of covert channel is set to 1bit per second, which can be changed to any desired speed according to system's support for number of file creation and deletions on a second. Default address is set to C:\\
+For each bit of message, existence of the folder indicates 1 and absence of the folder indicates 0.
+Sender converts the message to ascii, character by character from the begging and creates or deletes a folder on default address according to the related message bit. Receiver checks whether the folder exists or not and buffers 0 or 1 according to the result. Receiver converts each 8 bits to an ascii character. If receiver captures a preemtion block, it signals the sender that it has received the message using the same method, and then it quits.
